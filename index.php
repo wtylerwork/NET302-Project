@@ -1,5 +1,7 @@
 <?php
-
+	echo"<script language='javascript'>
+		api.openweathermap.org/data/2.5/weather?q=plymouth&appid=a1772b5eb4516dca799fa31e7482ac70
+	</script>"
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,9 @@
 	</head>
 	<body>
 <header>
+	<title> UK Weather </title>
 </header>
+
 <footer class="page-footer" style="background-color: #2C3539">
 	<div class="container">
 		<div class="row">
@@ -36,5 +40,19 @@
 		</div>
 	</div>
 </footer>
+
+		<!--        JAVA SCRIPT        -->
+		<!-- Import Frameworks -->
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/materialize.min.js"></script>
+		<!-- Import Common Code -->
+		<!-- <script type="text/javascript" src="js/functions.js"></script> -->
+		<!-- <script type="text/javascript" src="js/global.js"></script> -->
+		<!-- Page Specific Script -->
+		<script type="text/javascript">
+		M.AutoInit()
+		$( '.sidenav' ).sidenav( 'draggable', true );
+		</script>
+
 	</body>
 </html>
