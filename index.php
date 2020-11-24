@@ -26,15 +26,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col l6 s12">
-				<h5 class="white-text">Jericho Defence Services Inc.</h5>
-				<p class="grey-text text-lighten-4">"Making your day a brighter place &trade;" since 2020.</p>
-			</div>
-			<div class="col l4 offset-l2 s12">
-				<h5 class="white-text">Links</h5>
-				<ul>
-					<li><a class="grey-text text-lighten-3" href="https://www.jdsi.com/store/" target="_blank">Weather Application</a>
-					</li>
-				</ul>
+				<p class="grey-text text-lighten-4">"Weather App Lmao &trade;"</p>
 			</div>
 		</div>
 	</div>
