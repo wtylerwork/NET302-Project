@@ -1,7 +1,6 @@
 <?php
-	echo"<script language='javascript'>
-		api.openweathermap.org/data/2.5/weather?q=plymouth&appid=a1772b5eb4516dca799fa31e7482ac70
-	</script>"
+	$city = "plymouth,uk"
+	$apicall = "api.openweathermap.org/data/2.5/weather?q="$city"&appid=a1772b5eb4516dca799fa31e7482ac70";
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +22,9 @@
 	</head>
 	<body>
 <header>
-	<title> UK Weather </title>
 </header>
+
+	<p class="grey-text text-lighten-4"> <?php $apicall; ?> </p>
 
 <footer class="page-footer" style="background-color: #2C3539">
 	<div class="container">
@@ -50,8 +50,6 @@
 		<!-- <script type="text/javascript" src="js/global.js"></script> -->
 		<!-- Page Specific Script -->
 		<script type="text/javascript">
-		M.AutoInit()
-		$( '.sidenav' ).sidenav( 'draggable', true );
 		</script>
 
 	</body>
