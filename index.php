@@ -21,10 +21,13 @@
 
 	</head>
 	<body>
-<header>
-</header>
 
-	<p class="grey-text text-lighten-4"> <?php $apicall; ?> </p>
+		<h1>Enter City</h1>
+		<div class="row">
+			<div class="input-field col s8">
+				<input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required>
+			</div>
+		</div>
 
 <footer class="page-footer" style="background-color: #2C3539">
 	<div class="container">
