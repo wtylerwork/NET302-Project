@@ -1,6 +1,4 @@
 <?php
-	$city = "plymouth,uk"
-	$apicall = "api.openweathermap.org/data/2.5/weather?q="$city"&appid=a1772b5eb4516dca799fa31e7482ac70";
 ?>
 
 <!DOCTYPE html>
