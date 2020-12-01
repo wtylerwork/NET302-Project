@@ -17,17 +17,17 @@
 		<!-- Import Custom Styles -->
 		<link rel="stylesheet" href="css/styles.css">
 
-		<title>UK Weather</title>
-
 	</head>
 	<body>
-
-		<h1>Enter City</h1>
-		<div class="row">
-			<div class="input-field col s8">
-				<input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Weather</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required></li>
+						<li><input placeholder="Submit" name="submit" id="submit" type="submit" class="button"></li>
+				</ul>
 			</div>
-		</div>
+		</nav>
 
 <footer class="page-footer" style="background-color: #2C3539">
 	<div class="container">
