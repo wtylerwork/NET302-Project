@@ -22,10 +22,10 @@
 				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<div class="input-field col s3">
-							<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required></li>
+							<input placeholder="Enter a town, city or UK postcode" name="cityName" id="customerName" type="text" maxlength="120" size="70">
 						</div>
 						<div class"input-field col s2">
-							<li><input placeholder="Submit" name="submit" id="submit" type="submit" class="button"></li>
+							<input placeholder="Submit" name="submit" id="submit" type="submit" class="button">
 						</div>
 				</ul>
 			</div>
