@@ -21,10 +21,10 @@
 			<div class="nav-wrapper">
 				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<div class="input-field col s8">
+						<div class="input-field col s3">
 							<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required></li>
 						</div>
-						<div class"input-field col s10">
+						<div class"input-field col s2">
 							<li><input placeholder="Submit" name="submit" id="submit" type="submit" class="button"></li>
 						</div>
 				</ul>
