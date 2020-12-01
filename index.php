@@ -22,8 +22,6 @@
 				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
 					<div class="input-field col s3">
 						<input placeholder="Enter a town, city or UK postcode" name="cityName" id="customerName" type="text" maxlength="120" size="70">
-					</div>
-					<div class"input-field col s2">
 						<input placeholder="Submit" name="submit" id="submit" type="submit" class="button">
 					</div>
 				</ul>
