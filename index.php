@@ -21,8 +21,8 @@
 			<div class="nav-wrapper">
 				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" style="position:fixed; left:60px;" required></li>
-						<li><input placeholder="Submit" name="submit" id="submit" type="submit" class="button" style="position:fixed; left:45px;"></li>
+						<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" style="position:fixed; left:120px;" required></li>
+						<li><input placeholder="Submit" name="submit" id="submit" type="submit" class="button" style="position:fixed; left:150px;"></li>
 				</ul>
 			</div>
 		</nav>
