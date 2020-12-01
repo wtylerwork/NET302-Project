@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<nav>
-			<div class="nav-wrapper">
+			<div class="nav-wrapper" style="position:fixed; left:80px;">
 				<a href="#" class="brand-logo">Weather</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><input placeholder="City Name" name="cityName" id="customerName" type="text" class="validate" maxlength="50" required></li>
