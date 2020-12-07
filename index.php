@@ -19,10 +19,10 @@
 	<body>
 		<nav>
 			<div class="nav-wrapper" style="background-color: #2C3539; width:100%;">
-				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
-					<div style="position:relative; left:300px; top:5px; height:10px; font-size:14pt;">
-						<input placeholder="Enter a town, city or UK postcode" name="cityName" id="customerName" type="textbox" maxlength="120" size="70" style="outline:none;">
-    				<button class="material-icons" type="submit" style="position:relative; top:6px; left:-7px; cursor:pointer; height:27px;">search</button>
+				<a href="#" class="brand-logo" style="position:fixed; left:80px;">WEATHER</a>
+					<div style="position:relative; left:300px; top:2px; height:5px; font-size:14pt;">
+						<input placeholder="Enter a town, city or UK postcode" name="cityName" id="customerName" type="textbox" maxlength="120" size="70" style="border:none; outline:none;">
+    				<button class="material-icons" type="submit" style="position:relative; top:6px; left:-7px; cursor:pointer; height:23px; background-color:#fff; border:none;">search</button>
 					</div>
 				</ul>
 			</div>
