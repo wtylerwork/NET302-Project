@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<nav>
-			<div class="nav-wrapper">
+			<div class="nav-wrapper" style="background-color: #2C3539">
 				<a href="#" class="brand-logo" style="position:fixed; left:80px;">Weather</a>
 					<div style="position:relative; left:300px; top:5px; height:50px; font-size:14pt;">
 						<input placeholder="Enter a town, city or UK postcode" name="cityName" id="customerName" type="textbox" maxlength="120" size="70">
