@@ -1,0 +1,40 @@
+nav {
+    background-color: #2C3539;
+    width: 100%;
+  }
+
+logo {
+  position:relative;
+  left:80px;
+}
+
+searchbar {
+  position:relative;
+  left:300px;
+  top:2px;
+  height:5px;
+  font-size:14pt;
+}
+
+#cityName {
+  border:none;
+  outline:none;
+}
+
+#submitCity {
+  position:relative;
+  top:6px;
+  left:-7px;
+  cursor:pointer;
+  height:23px;
+  background-color:#fff;
+  border:none;
+}
+
+#footer {
+  background-color: #2C3539;
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+}
