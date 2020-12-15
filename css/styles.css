@@ -4,13 +4,14 @@ nav {
   }
 
 logo {
-  position:relative;
-  left:80px;
+  display:block;
+  position:fixed;
+  left:3%;
 }
 
 searchbar {
-  position:relative;
-  left:300px;
+  position:fixed;
+  left:25%;
   top:2px;
   height:5px;
   font-size:14pt;
