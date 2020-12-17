@@ -1,4 +1,31 @@
 <?php
+// Include Composer's Autoloader
+require 'vendor/autoload.php';
+
+$location= '';
+$location= $_GET[ 'location' ];
+
+if (isset($location))
+{	
+	//Connection Details
+	$client = new MongoDB\Client("mongodb://NET302Admin:NET302@54.87.27.24:27017");
+	$collection = ($client)->NET302DB->$location;
+	$cursor = $collection->find(
+		[
+		],
+		[
+			'limit' => 1,
+			'sort' => [
+				'_id' => -1,
+			]
+		]	
+	);
+
+	foreach ($cursor as $Results){
+		$jsonResults = MongoDB\BSON\toJSON(MongoDB\BSON\fromPHP($Results));
+		$jsonArray = json_decode($jsonResults, true);
+	};
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +48,22 @@
 			<div class="nav-wrapper" id="main-nav-bar">
 				<logo href="#" class="brand-logo">WEATHER</logo>
 					<searchbar>
-						<input placeholder="Enter a town, city or UK postcode" name="cityName" id="cityName" type="textbox" maxlength="120" size="70">
-    				<button class="material-icons" id="submitCity" type="submit">search</button>
+						<form action='../launchPython.php' method='POST'>
+							<input placeholder="Enter a town, city or UK postcode" name="locName" id="locName" type="textbox" maxlength="120" size="70">
+    							<button class="material-icons" id="submitCity" type="submit">search</button>
+						</form>
 					</searchbar>
 				</ul>
 			</div>
 		</nav>
+
+		<div>
+			<?php 
+				var_dump($jsonArray);
+				echo $jsonArray['weather'][0]['main'];
+				echo $jsonArray['main']['temp'];
+ 			?>
+		</div>
 
 <footer class="page-footer" id="footer">
 	<div class="container">
