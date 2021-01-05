@@ -3,8 +3,14 @@ import requests
 import configparser
 import sys
 import pymongo
+from time import mktime
+from datetime import datetime
 from geopy import Nominatim
 from bson import json_util
+
+#Time Details
+datetime = datetime.now()
+unixtime = mktime(datetime.timetuple())
 
 #API URL details
 api_token = 'a1772b5eb4516dca799fa31e7482ac70'
@@ -33,14 +39,10 @@ def get_weather_data():
 
 #Outputs the Nested JSON file retrieved from the API
 weather_data = get_weather_data()
+weather_data['timecreated'] = unixtime
+print(weather_data)
 
 #Converts the Nested JSON File to BSON and stores in mongoDB 
-if weather_data is not None:
-
-    JsonToJstring = json.dumps(weather_data)
-    JstringToBson = json_util.loads(JsonToJstring)
-    mycol.insert_one(JstringToBson)
-
-else:
-    print('[!] Request Failed')
-
+JsonToJstring = json.dumps(weather_data)
+JstringToBson = json_util.loads(JsonToJstring)
+mycol.insert_one(JstringToBson)

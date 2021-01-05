@@ -3,8 +3,17 @@
 require 'vendor/autoload.php';
 
 $location= '';
-$location= $_GET[ 'location' ];
-
+$location= $_POST[ 'location' ];
+if (!isset($location))
+{
+	$location = $_COOKIE["locName"];
+}
+$userIP=$_SERVER['REMOTE_ADDR'];;
+$userLocData = json_decode(file_get_contents("http://ipinfo.io/{$userIP}/json"));
+$coords = $userLocData->loc;
+$coords_explode=explode(",",$coords);
+$lat = $coords_explode[0];
+$lon = $coords_explode[1];
 if (isset($location))
 {	
 	//Connection Details
@@ -26,7 +35,13 @@ if (isset($location))
 		$jsonArray = json_decode($jsonResults, true);
 	};
 }
+else {
+	$location=$userLocData->city;
+	setcookie("locName", $location, time()+2);
+	header("location:../launchPython.php");
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -58,10 +73,10 @@ if (isset($location))
 		</nav>
 
 		<div>
-			<?php 
-				var_dump($jsonArray);
-				echo $jsonArray['weather'][0]['main'];
-				echo $jsonArray['main']['temp'];
+			<?php 	
+				//var_dump($jsonArray);
+				echo $jsonArray['daily'][0]['weather'][0]['main'];
+				#echo $jsonResults;
  			?>
 		</div>
 
