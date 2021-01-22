@@ -1,11 +1,15 @@
 <?php
 require 'vendor/autoload.php';
+
 $locName = $_POST['locName'];
+
 if (!isset($locName))
 {
 	$locName = $_COOKIE["locName"];
 }
-echo $locName;
+
+$locName = preg_replace("/[^a-zA-Z\-]/", "", $locName);
+$locName = strtoupper($locName);
 //Connection Details
 $client = new MongoDB\Client("mongodb://NET302Admin:NET302@54.87.27.24:27017");
 $collections = ($client)->NET302DB->listCollections([
@@ -18,7 +22,6 @@ $exists = 0;
 foreach ($collections as $collectionData){
 	$exists = 1;
 }
-echo $exists;
 if ($exists = 1){
 	$collection = ($client)->NET302DB->$locName;
 	$cursor = $collection->find(

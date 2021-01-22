@@ -10,7 +10,7 @@ if (!isset($location))
 {
 	$location = $_COOKIE["locName"];
 }
-$userIP=$_SERVER['REMOTE_ADDR'];;
+$userIP=$_SERVER['REMOTE_ADDR'];
 $userLocData = json_decode(file_get_contents("http://ipinfo.io/{$userIP}/json"));
 $coords = $userLocData->loc;
 $coords_explode=explode(",",$coords);
@@ -42,7 +42,7 @@ else {
 	setcookie("locName", $location, time()+2);
 	header("location:../launchPython.php");
 }
-
+$location= strtoupper($location);
 ############ FUNCTIONS ############
 
 function ordinalSuffix($number) {
@@ -75,7 +75,7 @@ function day($dayCounter) {
                                 <logo href="#" class="brand-logo">WEATHER</logo>
                                         <searchbar>
                                                 <form action='../launchPython.php' method='POST'>
-                                                        <input placeholder="Enter a town, city or UK postcode" name="locName" id="locName" type="textbox" maxlength="120" size="70" required>
+                                                        <input placeholder="Enter a town or city" name="locName" id="locName" type="textbox" maxlength="120" size="70" required>
                                                         <button class="material-icons" id="submitCity" type="submit">search</button>
                                                 </form>
                                         </searchbar>
@@ -85,34 +85,90 @@ function day($dayCounter) {
 	</head>
 	<body>
 		<div>
+			<dt id="currentLocation"><?php echo $location ?></dt>
 			<div class="row">
-				<div class="tabUpper">						<div class="tab">
-						<button class="tablinks" onclick="openTab(event, 'day1')"><?php echo day(0);?></button>
+				<div class="tabUpper">						
+					<div class="tab">
+						<button class="tablinks active" onclick="openTab(event, 'day1')"><?php echo day(0);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day2')"><?php echo day(1);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day3')"><?php echo day(2);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day4')"><?php echo day(3);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day5')"><?php echo day(4);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day6')"><?php echo day(5);?></button>
 						<button class="tablinks" onclick="openTab(event, 'day7')"><?php echo day(6);?></button>
-						<button class="tablinks" onclick="openTab(event, 'day7')"><?php echo day(7);?></button>
+						<button class="tablinks" onclick="openTab(event, 'day8')"><?php echo day(7);?></button>
 					</div>
 				</div>
 				<div id="day1" class="tabcontent">
 					<img id="day1Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][0]['weather'][0]['icon'];?>@2x.png">
-					<dt id="day1Main">Main: <?php echo $jsonArray['daily'][0]['weather'][0]['main']; ?></dt>
-					<dt id="day1Desc">Description: <?php echo $jsonArray['daily'][0]['weather'][0]['description']; ?></dt>
+					<dt id="day1Main">Weather: <?php echo ucfirst($jsonArray['daily'][0]['weather'][0]['main']); ?></dt>
+					<dt id="day1Desc">Description: <?php echo ucfirst($jsonArray['daily'][0]['weather'][0]['description']); ?></dt>
+					<dt id="day1Temp">Temperature: <?php echo(round($jsonArray['daily'][0]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+					<dt id="day1Humidity">Humidity: <?php echo $jsonArray['daily'][0]['humidity'];?>%</dt>
+					<dt id="day1WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][0]['wind_speed']));?>MpH</dt>
 				</div>
 				<div id="day2" class="tabcontent">
-					<img src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][1]['weather'][0]['icon'];?>@2x.png">
-					<dt>Main: <?php echo $jsonArray['daily'][1]['weather'][0]['main']; ?></dt>
-                                              	<dt>Description: <?php echo $jsonArray['daily'][1]['weather'][0]['description']; ?></dt>
+					<img id="day2Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][1]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day2Main">Weather: <?php echo ucfirst($jsonArray['daily'][1]['weather'][0]['main']); ?></dt>
+                                        <dt id="day2Desc">Description: <?php echo ucfirst($jsonArray['daily'][1]['weather'][0]['description']); ?></dt>
+                                        <dt id="day2Temp">Temperature: <?php echo(round($jsonArray['daily'][1]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day2Humidity">Humidity: <?php echo $jsonArray['daily'][1]['humidity'];?>%</dt>
+                                        <dt id="day2WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][1]['wind_speed']));?>MpH</dt>
 				</div>
-    				<div id="day3" class="tabcontent">Test 3</div>
-				<div id="day4" class="tabcontent">Test 4</div>
-				<div id="day5" class="tabcontent">Test 5</div>
-				<div id="day6" class="tabcontent">Test 6</div>
-				<div id="day7" class="tabcontent">Test 7</div>
-				<div id="day8" class="tabcontent">Test 8</div>
+				<div id="day3" class="tabcontent">
+					<img id="day3Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][2]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day3Main">Weather: <?php echo ucfirst($jsonArray['daily'][2]['weather'][0]['main']); ?></dt>
+                                        <dt id="day3Desc">Description: <?php echo ucfirst($jsonArray['daily'][2]['weather'][0]['description']); ?></dt>
+                                        <dt id="day3Temp">Temperature: <?php echo(round($jsonArray['daily'][2]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day3Humidity">Humidity: <?php echo $jsonArray['daily'][2]['humidity'];?>%</dt>
+                                        <dt id="day3WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][2]['wind_speed']));?>MpH</dt>
+
+				</div>
+				<div id="day4" class="tabcontent">
+				<img id="day4Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][3]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day4Main">Weather: <?php echo ucfirst($jsonArray['daily'][3]['weather'][0]['main']); ?></dt>
+                                        <dt id="day4Desc">Description: <?php echo ucfirst($jsonArray['daily'][3]['weather'][0]['description']); ?></dt>
+                                        <dt id="day4Temp">Temperature: <?php echo(round($jsonArray['daily'][3]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day4Humidity">Humidity: <?php echo $jsonArray['daily'][3]['humidity'];?>%</dt>
+                                        <dt id="day4WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][3]['wind_speed']));?>MpH</dt>
+
+				</div>
+				<div id="day5" class="tabcontent">
+				<img id="day5Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][4]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day5Main">Weather: <?php echo ucfirst($jsonArray['daily'][4]['weather'][0]['main']); ?></dt>
+                                        <dt id="day5Desc">Description: <?php echo ucfirst($jsonArray['daily'][4]['weather'][0]['description']); ?></dt>
+                                        <dt id="day5Temp">Temperature: <?php echo(round($jsonArray['daily'][4]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day5Humidity">Humidity: <?php echo $jsonArray['daily'][4]['humidity'];?>%</dt>
+                                        <dt id="day5WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][4]['wind_speed']));?>MpH</dt>
+
+				</div>
+				<div id="day6" class="tabcontent">
+				<img id="day6Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][5]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day6Main">Weather: <?php echo ucfirst($jsonArray['daily'][5]['weather'][0]['main']); ?></dt>
+                                        <dt id="day6Desc">Description: <?php echo ucfirst($jsonArray['daily'][5]['weather'][0]['description']); ?></dt>
+                                        <dt id="day6Temp">Temperature: <?php echo(round($jsonArray['daily'][5]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day6Humidity">Humidity: <?php echo $jsonArray['daily'][5]['humidity'];?>%</dt>
+                                        <dt id="day6WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][5]['wind_speed']));?>MpH</dt>
+
+				</div>
+				<div id="day7" class="tabcontent">
+				<img id="day7Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][6]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day7Main">Weather: <?php echo ucfirst($jsonArray['daily'][6]['weather'][0]['main']); ?></dt>
+                                        <dt id="day7Desc">Description: <?php echo ucfirst($jsonArray['daily'][6]['weather'][0]['description']); ?></dt>
+                                        <dt id="day7Temp">Temperature: <?php echo(round($jsonArray['daily'][6]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day7Humidity">Humidity: <?php echo $jsonArray['daily'][6]['humidity'];?>%</dt>
+                                        <dt id="day7WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][6]['wind_speed']));?>MpH</dt>
+
+				</div>
+				<div id="day8" class="tabcontent">
+				<img id="day8Icon" src="http://openweathermap.org/img/wn/<?php echo $jsonArray['daily'][7]['weather'][0]['icon'];?>@2x.png">
+                                        <dt id="day8Main">Weather: <?php echo ucfirst($jsonArray['daily'][7]['weather'][0]['main']); ?></dt>
+                                        <dt id="day8Desc">Description: <?php echo ucfirst($jsonArray['daily'][7]['weather'][0]['description']); ?></dt>
+                                        <dt id="day8Temp">Temperature: <?php echo(round($jsonArray['daily'][7]['temp']['min']));?>C - <?php echo(round($jsonArray['daily'][0]['temp']['max']));?> C</dt>
+                                        <dt id="day8Humidity">Humidity: <?php echo $jsonArray['daily'][7]['humidity'];?>%</dt>
+                                        <dt id="day8WindSpeed">Wind Speed: <?php echo(round($jsonArray['daily'][7]['wind_speed']));?>MpH</dt>
+
+				</div>
 			</div>
 		</div>
 
@@ -269,13 +325,13 @@ function day($dayCounter) {
 	<div class="container">
 		<div class="row">
 			<div class="col l6 s12">
-				<p class="grey-text text-lighten-4">"Weather App Lmao &trade;"</p>
+				<p class="grey-text text-lighten-4">"Weather Forcast &trade;"</p>
 			</div>
 		</div>
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2020 William Tyler (NET302_Project)
+			© 2021 William Tyler (NET302_Project)
 		</div>
 	</div>
 </footer>
