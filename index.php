@@ -3,15 +3,16 @@
 <?php
 // Include Composer's Autoloader
 require 'vendor/autoload.php';
+session_start(); 
 
 $location= '';
 $location= $_POST[ 'location' ];
 if (!isset($location))
 {
-	$location = $_COOKIE["locName"];
+	$location = $_GET["locName"];
 }
 $userIP=$_SERVER['REMOTE_ADDR'];
-$userLocData = json_decode(file_get_contents("http://ipinfo.io/{$userIP}/json"));
+$userLocData = json_decode(file_get_contents("http://ipinfo.io/{$userIP}/json?token=838597e8bcb044"));
 $coords = $userLocData->loc;
 $coords_explode=explode(",",$coords);
 $lat = $coords_explode[0];
@@ -39,8 +40,9 @@ if (isset($location))
 }
 else {
 	$location=$userLocData->city;
-	setcookie("locName", $location, time()+2);
-	header("location:../launchPython.php");
+	#setrawcookie("locName", $location, time()+2);
+	#$_SESSION['locName'] = $location;
+	header("location:../launchPython.php?locName=$location");
 }
 $location= strtoupper($location);
 ############ FUNCTIONS ############
@@ -184,8 +186,8 @@ function day($dayCounter) {
 
 				function initialize() {
 					var mapOptions = {
-					zoom: 4,
-					center: new google.maps.LatLng(50,-50)
+					zoom: 11,
+					center: new google.maps.LatLng("<?php echo $jsonArray['lat'];?>","<?php echo $jsonArray['lon'];?>")
 					};
 
 					map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
@@ -325,7 +327,7 @@ function day($dayCounter) {
 	<div class="container">
 		<div class="row">
 			<div class="col l6 s12">
-				<p class="grey-text text-lighten-4">"Weather Forcast &trade;"</p>
+				<p class="grey-text text-lighten-4">"WS2"</p>
 			</div>
 		</div>
 	</div>

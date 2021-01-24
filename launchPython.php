@@ -1,11 +1,12 @@
 <?php
 require 'vendor/autoload.php';
+session_start(); 
 
 $locName = $_POST['locName'];
 
 if (!isset($locName))
 {
-	$locName = $_COOKIE["locName"];
+	$locName = $_GET['locName'];
 }
 
 $locName = preg_replace("/[^a-zA-Z\-]/", "", $locName);
@@ -50,6 +51,6 @@ if ($exists = 1){
 	shell_exec("/var/www/NET302-Project/pythonScripts/bin/python3 /var/www/NET302-Project/pythonScripts/get_request.py $locName");
 }
 
-setcookie("locName", $locName, time()+2);
-header("location:../index.php");
+#setrawcookie("locName", $locName, time()+2);
+header("location:../index.php?locName=".$locName);
 ?>
